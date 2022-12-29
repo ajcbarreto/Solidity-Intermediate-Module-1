@@ -1,0 +1,39 @@
+pragma solidity ^0.7.0;
+
+contract MyContract {
+  // Declare a state variable to store the value
+  uint private value;
+
+  // Declare a view function to get the value
+  function getValue() public view returns (uint) {
+    return value;
+  }
+
+  // Declare a pure function to calculate the double of the value
+  function doubleValue() public pure returns (uint) {
+    return value * 2;
+  }
+
+  // Declare a payable function to set the value
+  function setValue(uint _value) public payable {
+    value = _value;
+  }
+}
+
+// Derive a contract from MyContract
+contract DerivedContract is MyContract {
+  // Declare a function that calls the view function from MyContract
+  function getValueFromMyContract() public view returns (uint) {
+    return getValue();
+  }
+
+  // Declare a function that calls the pure function from MyContract
+  function doubleValueFromMyContract() public pure returns (uint) {
+    return doubleValue();
+  }
+
+  // Declare a function that calls the payable function from MyContract
+  function setValueFromMyContract(uint _value) public payable {
+    setValue(_value);
+  }
+}
