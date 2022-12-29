@@ -1,0 +1,17 @@
+pragma solidity >=0.7.0 <0.9.0; //solidity version
+contract Module1{
+
+    constructor(){
+        admin = msg.sender;
+    }
+
+    modifier onlyAdmin { 
+        require (admin == msg.sender, "only admin have access");
+        _;
+    }
+
+    function demo () public onlyAdmin{
+        //Only admin can have access
+    }
+
+}
